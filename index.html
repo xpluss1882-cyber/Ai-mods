@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART COMBAT AI</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { background: #0a0d14; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .overlay-card { background: rgba(16, 20, 29, 0.9); border: 2px solid #00f0ff; border-radius: 16px; padding: 24px; width: 320px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .title { color: #00f0ff; font-weight: bold; font-size: 1.1rem; }
+        .status-dot { width: 10px; height: 10px; background: #00ff66; border-radius: 50%; box-shadow: 0 0 8px #00ff66; }
+        .control-btn { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #333; background: #151a24; color: #fff; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .control-btn.active-dodge { background: #ff0055; border-color: #ff0055; box-shadow: 0 0 12px rgba(255, 0, 85, 0.4); }
+        .control-btn.active-aim { background: #00f0ff; color: #000; border-color: #00f0ff; box-shadow: 0 0 12px rgba(0, 240, 255, 0.4); }
+        .latency { display: flex; justify-content: space-between; font-size: 0.85rem; color: #aaa; margin-top: 15px; }
+        .master-btn { width: 100%; padding: 14px; background: linear-gradient(90deg, #00f0ff, #7000ff); border: none; border-radius: 8px; color: white; font-weight: bold; margin-top: 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="overlay-card">
+        <div class="header">
+            <span class="title">🎯 SMART COMBAT AI</span>
+            <div class="status-dot"></div>
+        </div>
+        
+        <button class="control-btn" id="dodgeBtn" onclick="toggleDodge()">🔴 AUTO DODGE: OFF</button>
+        <button class="control-btn" id="aimBtn" onclick="toggleAim()">🎯 AIM BOT: OFF</button>
+        
+        <div class="latency">
+            <span>استجابة الذكاء الاصطناعي:</span>
+            <span style="color: #00ff66;" id="ping">24 ms</span>
+        </div>
+
+        <button class="master-btn" onclick="toggleMaster()">تفعيل النظام بالكامل</button>
+    </div>
+
+    <script>
+        let dodge = false, aim = false, active = false;
+        function toggleDodge() {
+            dodge = !dodge;
+            const btn = document.getElementById('dodgeBtn');
+            btn.innerText = dodge ? "🔴 AUTO DODGE: ON" : "🔴 AUTO DODGE: OFF";
+            btn.classList.toggle('active-dodge', dodge);
+        }
+        function toggleAim() {
+            aim = !aim;
+            const btn = document.getElementById('aimBtn');
+            btn.innerText = aim ? "🎯 AIM BOT: ON" : "🎯 AIM BOT: OFF";
+            btn.classList.toggle('active-aim', aim);
+        }
+        function toggleMaster() {
+            active = !active;
+            alert(active ? "تم تشغيل نظام SMART COMBAT AI!" : "تم إيقاف النظام.");
+        }
+    </script>
+</body>
+</html>
